@@ -1,6 +1,9 @@
+import Router from "./pages/router/Router";
+
 function App() {
   return (
     <div className="App">
+      <Router />
     </div>
   );
 }
