@@ -1,3 +1,5 @@
 export default function TodoDetail(){
-    return <>TodoDetail</>
+    return (
+        "detail"
+    )
 }

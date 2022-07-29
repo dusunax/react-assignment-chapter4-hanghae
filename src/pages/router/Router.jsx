@@ -1,8 +1,11 @@
-import { Route } from "react-router-dom";
-import Layout from "../../components/header/Header";
+import TodoDetail from "../../components/todoDetail/TodoDetail";
+import TodoList from "../../components/todoList/TodoList";
 
 export default function Router(){
     return (
-        <Layout />
+        <>
+            <TodoList />
+            <TodoDetail />
+        </>
     )
 }
