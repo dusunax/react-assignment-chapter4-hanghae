@@ -54,7 +54,7 @@
 
 ## Notice
 ### initialState: 필수 아님
->```
+```
 const initialState = [
 	{
 		id: 1, // id는 모두 고유값이어야 합니다.
