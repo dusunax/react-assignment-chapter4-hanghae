@@ -1,9 +1,27 @@
+import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components';
+import { doneNote } from "../../redux/config/modules/note";
+import { useDispatch } from "react-redux";
+
 export default function Todo(props){
-    console.log()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
-        <p>
+        <Card onClick={()=>{
+            dispatch(doneNote(props.list.id));
+        }}>
             <span>{props.list.title}</span>
             <span>{props.list.context}</span>
-        </p>
+            <span>{props.list.done?'O':"X"}</span>
+            <button  
+            onClick={()=>{
+                navigate(props.list.title)
+            }}>
+                상세보기
+            </button>
+        </Card>
     )
 }
+
+const Card = styled.div`
+`

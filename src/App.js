@@ -1,40 +1,24 @@
 import React from "react";
-import Layout from "./pages/layout/Layout";
-import {db} from './firebase'
-import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc} from 'firebase/firestore'
+import Router from "./pages/router/Router";
+import styled from "styled-components";
+import './index.css'
 
 export default function App() {
-  
-  React.useEffect(()=>{
-    async function fetchData(){
-      // console.log(db)
-  
-      //CREATE
-      // addDoc(collection(db, 'todos'), {title: '제목2', context:"내용2", done: false})
-  
-      //UPDATE
-      // const docRef = doc(db, 'todo', 'wWVyFh6Gejq09GexFNzJ');
-      // updateDoc(docRef, {done: false})
-
-      //DELETE
-      const docRef = doc(db, 'todo', 'wWVyFh6Gejq09GexFNzJ');
-      // deleteDoc(docRef)
-
-      //READ
-      const query = await getDocs(collection(db, 'todo'))
-      console.log("--firestore--")
-      query.forEach((doc)=>{
-        console.log(doc.id, doc.data())
-      })
-      console.log("-------------")
-      
-    }
-    fetchData();
-  },[])
-
   return (
-    <div className="App">
-      <Layout />
-    </div>
+    <Wrap>
+      <Router />
+    </Wrap>
   );
 }
+
+const Wrap = styled.div`
+width: 100%;
+min-width: 800px;
+max-width: 1024px;
+height: 90vh;
+margin: 20px auto;
+border-radius: 20px;
+
+background-color: #F6F6F6;
+text-align: center;
+`

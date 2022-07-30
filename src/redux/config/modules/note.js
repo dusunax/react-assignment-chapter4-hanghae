@@ -1,8 +1,10 @@
-import { customAlphabet, nanoid } from "nanoid";
-// console.log(nanoid(8))
+import {nanoid} from 'nanoid'
 
 //액션 타입
-const READ = "note/READ"
+const CREATE = "note/CREATE"
+const LOAD = "note/LOAD"
+const UPDATE = "note/UPDATE"
+const DELETE = "note/DELETE"
 
 const initialList = {
 	list: [
@@ -12,16 +14,74 @@ const initialList = {
 }
 
 //액션 생성
-export function readNote(list_index){
-	return {type: READ, list_index}
+export function loadNote(note_list){
+	return {type: LOAD, note_list}
 }
+
+export function addNote(new_note){
+    new_note = {id: nanoid(8), ...new_note};
+	return {type: CREATE, new_note}
+}
+
+export function doneNote(note_idx){
+	return {type: UPDATE, note_idx}
+}
+
+export function deleteNote(note){
+	return {type: DELETE, note}
+}
+
+// 미들웨어
+// export const loadNoteFB = () => {
+//     return async function(dispatch){
+//         const query = await getDocs(collection(db, 'todo'))
+        
+//         let list=[]
+//         query.forEach((doc)=>{
+//             list.push({id: doc.id, ...doc.data()})
+//         })
+//         console.log(list);
+
+//         dispatch(loadNote(list))
+//     }
+// }
+
+// export const addNoteFB = (note) => {
+//     return async function (dispatch) {
+//         const new_note = {...note, done: false};
+
+//         // console.log('여기');
+//         const docRef = await addDoc(collection(db, 'todo'), new_note)
+//         console.log(docRef);
+
+//         dispatch(loadNote(new_note))
+//     }
+// }
 
 // 리듀서
 export default function reducer(state = initialList, action = {}) {
     switch (action.type) {
-        case 'note/READ': {
-            //
-            return {state}; //추가한 값 return
+        case 'note/CREATE': {
+            console.log([...state.list, action.new_note]);
+            return {list: [...state.list, action.new_note]};
+        }
+        case 'note/LOAD': {
+            return {list: [...action.note_list]}
+        }
+        case 'note/UPDATE': {
+            const new_list = state.list.map((l)=>{
+                if(action.note_idx === l.id){
+                    let isDone = l.done?false:true;
+                    return { title: l.title, context: l.context, done: isDone }
+                } else {
+                    return l
+                }
+            })
+            return {list: new_list}
+        }
+        case 'note/DELETE': {
+            console.log('삭제');
+            return state;
         }
         default: {
             return state;

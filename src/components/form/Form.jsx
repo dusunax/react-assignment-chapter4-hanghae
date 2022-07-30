@@ -1,36 +1,73 @@
-import { Button, TextField } from "@mui/material";
-import Container from "@mui/material/Container";
+import React from 'react'
+import { addNote } from "../../redux/config/modules/note";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import styled from "styled-components";
+import Container from "@mui/material/Container";
+import { Button } from "@mui/material";
 
 export default function Form(){
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const titleRef = React.useRef(null);
+    const contextRef = React.useRef(null);
+
+    const submitNote = () => {
+        if(titleRef.current.value === "" || contextRef.current.value === ""){
+            alert('값을 입력해주세요.')
+        } else {
+            const newNote = {
+                title: titleRef.current.value, 
+                context: contextRef.current.value
+            };
+            dispatch(addNote(newNote));
+            titleRef.current.value="";
+            contextRef.current.value="";
+            navigate('/')
+        }
+    }
+
     return (
         <MyFormControl>
             <Container>
-                <label htmlFor="todoTitle" style={{display: 'none'}}>
+                <label 
+                htmlFor="title" 
+                style={{display: 'none'}}
+                >
                     제목
                 </label>
-                <TextField
-                hiddenLabel
-                id="todoTitle"
+                <input
+                name="title"
+                id="title"
                 variant="outlined"
                 size="small"
+                ref={titleRef}
                 placeholder="제목을 입력하세요."
-                // label="제목"
+                minLength={1}
                 />
-                <label htmlFor="todoContext" style={{display: 'none'}}>
+                <label 
+                htmlFor="context" 
+                style={{display: 'none'}}
+                >
                     내용
                 </label>
-                <TextField
-                hiddenLabel
-                id="todoContext"
+                <input
+                name="context"
+                id="context"
                 variant="outlined"
                 size="small"
+                ref={contextRef}
                 placeholder="내용을 입력하세요."
-                // label="내용"
+                minLength={1}
                 />
                 <Button 
                 variant="outlined"
-                color="secondary">
+                color="secondary"
+                onClick={()=>{
+                    submitNote()
+                }}
+                >
                     New Todo
                 </Button>
             </Container>
