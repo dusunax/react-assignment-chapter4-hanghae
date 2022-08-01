@@ -54,14 +54,15 @@ export default function Form(){
                 >
                     내용
                 </label>
-                <input
+                <textarea
                 name="context"
                 id="context"
                 variant="outlined"
                 size="small"
                 ref={contextRef}
                 placeholder="내용을 입력하세요."
-                minLength={1}autoComplete='off'
+                minLength={1} autoComplete='off'
+                maxLength={50}
                 />
                 <Button 
                 variant="outlined"
@@ -78,7 +79,6 @@ export default function Form(){
 }
 
 const MyFormControl = styled.form`
-
 & > div {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -89,15 +89,27 @@ const MyFormControl = styled.form`
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
     gap: 10px;
 }
 
-input {
+input, textarea {
     all: unset;
-    padding: 10px 40px;
+    padding: 10px 20px;
     border-radius: 20px;
     font-size: 12px;
     background: #fff;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0px 2px 10px #ddd;
+}
+
+textarea[name="context"] {
+    width: 160px;
+    height: 60px;
+    
+    word-break: keep-all;
+    word-wrap: break-word;
+    resize: none;
 }
 `
