@@ -31,7 +31,6 @@ font-family: 'Kirang Haerang', cursive;
     justify-content: space-between;
 }
 .subText {
-    margin-bottom: 10px;
     font-size: 24px;
 }
 .logo {

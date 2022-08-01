@@ -10,27 +10,23 @@ export default function Router(){
     return (
         <BrowserRouter>
 
-            <Sticky>
+            <>
                 <Header />
                 <Form />
-            </Sticky>
 
-            <Container>
-                <Routes>
-                    <Route path="/*" element={<TodoList />} />
-                    <Route path="/:title" element={<TodoDetail />} />
-                    <Route element={<TodoDetail />} />
-                </Routes>
-            </Container>
+                <Container>
+                    <Routes>
+                        <Route path="/*" element={<TodoList />} />
+                        <Route path="/:title" element={<TodoDetail />} />
+                        <Route element={<TodoDetail />} />
+                    </Routes>
+                </Container>
+            </>
 
         </BrowserRouter>
     )
 }
 
-const Sticky=styled.div`
-position: sticky;
-top: 0;
-`
 const Container=styled.div`
 text-align: center;
 `

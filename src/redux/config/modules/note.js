@@ -31,38 +31,10 @@ export function deleteNote(note){
 	return {type: DELETE, note}
 }
 
-// 미들웨어
-// export const loadNoteFB = () => {
-//     return async function(dispatch){
-//         const query = await getDocs(collection(db, 'todo'))
-        
-//         let list=[]
-//         query.forEach((doc)=>{
-//             list.push({id: doc.id, ...doc.data()})
-//         })
-//         console.log(list);
-
-//         dispatch(loadNote(list))
-//     }
-// }
-
-// export const addNoteFB = (note) => {
-//     return async function (dispatch) {
-//         const new_note = {...note, done: false};
-
-//         // console.log('여기');
-//         const docRef = await addDoc(collection(db, 'todo'), new_note)
-//         console.log(docRef);
-
-//         dispatch(loadNote(new_note))
-//     }
-// }
-
 // 리듀서
 export default function reducer(state = initialList, action = {}) {
     switch (action.type) {
         case 'note/CREATE': {
-            console.log([...state.list, action.new_note]);
             return {list: [...state.list, action.new_note]};
         }
         case 'note/LOAD': {
@@ -72,7 +44,7 @@ export default function reducer(state = initialList, action = {}) {
             const new_list = state.list.map((l)=>{
                 if(action.note_idx === l.id){
                     let isDone = l.done?false:true;
-                    return { title: l.title, context: l.context, done: isDone }
+                    return { ...l, done: isDone }
                 } else {
                     return l
                 }

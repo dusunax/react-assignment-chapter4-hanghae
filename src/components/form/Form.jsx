@@ -82,7 +82,6 @@ const MyFormControl = styled.form`
 & > div {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-image: linear-gradient( transparent 80%, #f5f5f5);
     border-bottom: 3px dotted #fff;
 
     font-size: 14px;

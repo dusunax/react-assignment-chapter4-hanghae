@@ -24,3 +24,37 @@ code {
   0% {transform: scale(.8); opacity: .6;}  
   100% {transform: scale(1); opacity: 1;}  
 }
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccd5eb;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8f8f;
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgb(255, 99, 99);
+}
+::-webkit-scrollbar-track {
+  background: #8896bc;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #bab1b1;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

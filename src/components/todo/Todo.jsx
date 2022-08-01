@@ -7,12 +7,12 @@ export default function Todo(props){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
-        <Card onClick={()=>{
-            dispatch(doneNote(props.list.id));
-        }}>
+        <Card>
             <span className='todo-title'>{props.list.title}</span>
             <span className='todo-text'>{props.list.context}</span>
-            <span className='ox'>{props.list.done?'O':"X"}</span>
+            <span className='ox' onClick={()=>{
+            dispatch(doneNote(props.list.id));
+        }}>{props.list.done?'O':"X"}</span>
             <button  
             onClick={()=>{
                 navigate(props.list.title)

@@ -10,7 +10,6 @@ export default function TodoList(){
     const data = useSelector((state) => state.note.list)
     const listDone = data.filter(list => list.done )
     const listNotDone = data.filter(list => !list.done )
-    console.log(listDone)
     
     useEffect(()=>{
         dispatch(loadNote(data))
@@ -51,8 +50,9 @@ const MyList=styled.div`
 color: #fff;
 
 .contents-area {
-    height: 100%;
+    height: 300px;
     display: flex;
+    background-image: linear-gradient( transparent, rgba(108, 113, 123, 0.1));
     overflow-y: scroll;
 }
 
@@ -66,6 +66,7 @@ color: #fff;
 
 .title {
     padding: 3px 30px;
+    margin: 8px;
     display: inline-block;
     background: #0682c1;
     border-radius: 10px 10px 0 10px;

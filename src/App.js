@@ -12,14 +12,14 @@ export default function App() {
 }
 
 const Wrap = styled.div`
-width: 100%;
+width: 85%;
 max-width: 600px;
-min-height: 90vh;
+height: calc(100vh - 50px);
 
 margin: 20px auto;
-padding: 2em;
+padding: 1em 2em;
 box-sizing: border-box;
-border-radius: 20px;
+border-radius: 24px;
 border: 7px solid #222;
 box-shadow: 2px 10px 10px #aaa;
 
