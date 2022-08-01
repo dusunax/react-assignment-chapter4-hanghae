@@ -45,6 +45,8 @@ export default function Form(){
                 ref={titleRef}
                 placeholder="제목을 입력하세요."
                 minLength={1}
+                autoFocus={true}
+                autoComplete='off'
                 />
                 <label 
                 htmlFor="context" 
@@ -59,7 +61,7 @@ export default function Form(){
                 size="small"
                 ref={contextRef}
                 placeholder="내용을 입력하세요."
-                minLength={1}
+                minLength={1}autoComplete='off'
                 />
                 <Button 
                 variant="outlined"
@@ -81,16 +83,21 @@ const MyFormControl = styled.form`
     padding-top: 10px;
     padding-bottom: 10px;
     background-image: linear-gradient( transparent 80%, #f5f5f5);
+    border-bottom: 3px dotted #fff;
 
     font-size: 14px;
 
     display: flex;
+    flex-flow: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 10px;
 }
 
 input {
+    all: unset;
+    padding: 10px 40px;
+    border-radius: 20px;
     font-size: 12px;
     background: #fff;
 }

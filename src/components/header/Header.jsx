@@ -8,9 +8,9 @@ export default function Header(){
         <Nav>
             <Container>
                 <span className="logo" onClick={()=> navigate("/")}>
-                    My ToDo List
+                    My ToDo List ☀
                 </span>
-                <span>:React</span>
+                <span className="subText">:React</span>
             </Container>
         </Nav>
     )
@@ -22,17 +22,24 @@ max-width: 1200px;
 margin: auto;
 padding-top: 20px;
 line-height: 40px;
+color: #fff;
+font-family: 'Kirang Haerang', cursive;
 
 & > div {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
 }
-
+.subText {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
 .logo {
+    margin-bottom: 12px;
     font-weight: 600;
     font-size: 50px;
     cursor: pointer;
+    
 }
 
 .logo:hover {

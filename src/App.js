@@ -13,12 +13,16 @@ export default function App() {
 
 const Wrap = styled.div`
 width: 100%;
-min-width: 800px;
-max-width: 1024px;
-height: 90vh;
-margin: 20px auto;
-border-radius: 20px;
+max-width: 600px;
+min-height: 90vh;
 
-background-color: #F6F6F6;
+margin: 20px auto;
+padding: 2em;
+box-sizing: border-box;
+border-radius: 20px;
+border: 7px solid #222;
+box-shadow: 2px 10px 10px #aaa;
+
+background-color: #3AB4F2;
 text-align: center;
 `
