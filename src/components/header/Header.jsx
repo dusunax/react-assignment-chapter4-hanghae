@@ -20,7 +20,7 @@ const Nav = styled.nav`
 width: 100%;
 max-width: 1200px;
 margin: auto;
-padding-top: 20px;
+padding-top: 5px;
 line-height: 40px;
 color: #fff;
 font-family: 'Kirang Haerang', cursive;
@@ -34,7 +34,6 @@ font-family: 'Kirang Haerang', cursive;
     font-size: 24px;
 }
 .logo {
-    margin-bottom: 12px;
     font-weight: 600;
     font-size: 50px;
     cursor: pointer;

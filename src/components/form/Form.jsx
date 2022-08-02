@@ -65,13 +65,14 @@ export default function Form(){
                 maxLength={50}
                 />
                 <Button 
-                variant="outlined"
+                variant="contained"
                 color="secondary"
+                size="small"
                 onClick={()=>{
                     submitNote()
                 }}
                 >
-                    New Todo
+                    더하기
                 </Button>
             </Container>
         </MyFormControl>
@@ -80,7 +81,6 @@ export default function Form(){
 
 const MyFormControl = styled.form`
 & > div {
-    padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 3px dotted #fff;
 
@@ -89,14 +89,16 @@ const MyFormControl = styled.form`
     display: flex;
     flex-flow: column;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
 }
 
 input, textarea {
     all: unset;
-    padding: 10px 20px;
+    width: 100%;
+    max-width: 180px;
+    padding: 6px 20px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 10px;
     background: #fff;
 }
 
@@ -104,9 +106,13 @@ input:focus, textarea:focus {
     box-shadow: 0px 2px 10px #ddd;
 }
 
+button {
+    border-radius: 8px;
+    font-family: 'Kirang Haerang', cursive;
+}
+
 textarea[name="context"] {
-    width: 160px;
-    height: 60px;
+    height: 40px;
     
     word-break: keep-all;
     word-wrap: break-word;

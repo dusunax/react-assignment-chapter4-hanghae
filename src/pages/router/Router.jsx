@@ -8,25 +8,15 @@ import Form from "../../components/form/Form";
 
 export default function Router(){
     return (
-        <BrowserRouter>
+        <>
+            <Header />
+            <Form />
 
-            <>
-                <Header />
-                <Form />
-
-                <Container>
-                    <Routes>
-                        <Route path="/*" element={<TodoList />} />
-                        <Route path="/:title" element={<TodoDetail />} />
-                        <Route element={<TodoDetail />} />
-                    </Routes>
-                </Container>
-            </>
-
-        </BrowserRouter>
+            <Routes>
+                <Route path="/*" element={<TodoList />} />
+                <Route path="/:id" element={<TodoDetail />} />
+                <Route element={<TodoDetail />} />
+            </Routes>
+        </>
     )
 }
-
-const Container=styled.div`
-text-align: center;
-`

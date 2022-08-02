@@ -8,42 +8,53 @@ const DELETE = "note/DELETE"
 
 const initialList = {
 	list: [
-		{ title: '제목00', context: '내용00', done: false, id: '-8_UveSY'},
-		{ title: '제목01', context: '내용01', done: true, id: 'fNogmBF8'}
+		{ 
+            title: '기본 미완 노트 A', 
+            context: '기본 노트 내용입니다.', 
+            done: false, 
+            id: '-8_UveSY'
+        },
+		{ 
+            title: '기본 완료 노트 B', 
+            context: '기본 노트 내용입니다.', 
+            done: true, 
+            id: 'fNogmBF8'
+        }
 	],
 }
 
 //액션 생성
-export function loadNote(note_list){
-	return {type: LOAD, note_list}
+export function loadNote(payload){
+	return {type: LOAD, payload}
 }
 
-export function addNote(new_note){
-    new_note = {id: nanoid(8), ...new_note};
-	return {type: CREATE, new_note}
+export function addNote(payload){
+    payload = {id: nanoid(8), ...payload};
+	return {type: CREATE, payload}
 }
 
-export function doneNote(note_idx){
-	return {type: UPDATE, note_idx}
+export function doneNote(payload){
+	return {type: UPDATE, payload}
 }
 
-export function deleteNote(note){
-	return {type: DELETE, note}
+export function deleteNote(payload){
+	return {type: DELETE, payload}
 }
 
 // 리듀서
 export default function reducer(state = initialList, action = {}) {
+    const {payload}=action;
     switch (action.type) {
         case 'note/CREATE': {
-            return {list: [...state.list, action.new_note]};
+            return {list: [...state.list, payload]};
         }
         case 'note/LOAD': {
-            return {list: [...action.note_list]}
+            return {list: [...payload]}
         }
         case 'note/UPDATE': {
-            const new_list = state.list.map((l)=>{
-                if(action.note_idx === l.id){
-                    let isDone = l.done?false:true;
+            const new_list = state.list.map( l =>{
+                if(payload === l.id){
+                    let isDone = l.done ? false : true;
                     return { ...l, done: isDone }
                 } else {
                     return l
