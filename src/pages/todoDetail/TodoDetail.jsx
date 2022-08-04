@@ -1,37 +1,25 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
 import { useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
 
 export default function TodoDetail(){
-    let [title, setTitle] = useState(null);
-    let [text, setText] = useState(null);
-    let [currId, setCurrId] = useState(null);
     const data = useSelector((state) => state.note.list)
     let {id:curr_id} = useParams();
-    
-    const navigate = useNavigate();
+    const noteSelected = data.filter(list => list.id === curr_id)[0]
 
-    
-    useEffect(()=>{
-        const noteSelected = data.filter(list => list.id === curr_id)[0]
-        console.log(noteSelected);
-        setTitle(noteSelected.title)
-        setText(noteSelected.context)
-        setCurrId(noteSelected.id)
-    },[]);
+    const navigate = useNavigate();
 
     return (
         <CardDetail>
-            <h3 className="title">할일</h3>
-            <strong>
-                {title}
-            </strong>
+            <span className="section-tag">할일</span>
+            <h2>
+                {noteSelected.title}
+            </h2>
             <br />
-            {text}
+            {noteSelected.context}
             <hr />
             <span className='id-tag'>
-                id: {currId}
+                id: {noteSelected.id}
             </span>
             <button onClick={()=>{
                 navigate('/')   
@@ -44,7 +32,7 @@ export default function TodoDetail(){
 
 const CardDetail = styled.div`
 width: 100%;
-min-height: 330px;
+min-height: 440px;
 
 font-size: 14px;
 display: flex;
@@ -66,7 +54,7 @@ button {
     font-size: 12px;
 }
 
-.title {
+.section-tag {
     position: absolute;
     left: -15px;
     top: -38px;
@@ -86,5 +74,6 @@ button {
     left: 10px;
     top: 5px;
     color: #fff;
+    font-size: 12px;
 }
 `

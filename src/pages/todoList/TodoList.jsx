@@ -1,4 +1,4 @@
-import Todo from "../todo/Todo";
+import Todo from "../../components/todo/Todo";
 import { useSelector, useDispatch } from "react-redux";
 import { loadNote } from '../../redux/config/modules/note';
 import { useEffect } from "react";
@@ -47,11 +47,13 @@ export default function TodoList(){
 const MyList=styled.div`
 color: #fff;
 position: relative;
+background-color: #414141;
+border-radius: 0 0 16px 16px;
+background-image: linear-gradient( transparent, rgba(108, 113, 123, 0.2));
 
 .contents-area {
-    height: 450px;
+    height: 65vh;
     display: flex;
-    background-image: linear-gradient( transparent, rgba(108, 113, 123, 0.1));
     overflow-y: scroll;
 }
 
@@ -78,10 +80,11 @@ position: relative;
 }
 
 p {
-    color: #222;
+    color: #ffffff;
     padding: 5px 1em;
     margin: 0px;
-    border-bottom: 1px dotted #222;
+    margin-top: 8px;
+    border-bottom: 1px dotted #ffffff;
     font-size: 20px;
     font-weight: 500;
     font-family: 'Kirang Haerang', cursive;

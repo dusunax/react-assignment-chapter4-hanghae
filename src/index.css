@@ -21,7 +21,7 @@ code {
 }
 
 @keyframes pop {
-  0% {transform: scale(.9); opacity: .6;}  
+  0% {transform: scale(.95); opacity: .8;}  
   100% {transform: scale(1); opacity: 1;}  
 }
 
@@ -34,7 +34,7 @@ code {
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ccd5eb;
+  background: #949494;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
@@ -45,12 +45,12 @@ code {
   background: rgb(255, 99, 99);
 }
 ::-webkit-scrollbar-track {
-  background: #8896bc;
+  background: #4a4c50;
   border: 0px none #ffffff;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: #666666;
+  background: #a89c9c;
 }
 ::-webkit-scrollbar-track:active {
   background: #bab1b1;

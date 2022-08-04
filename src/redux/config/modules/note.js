@@ -37,7 +37,7 @@ export function doneNote(payload){
 	return {type: UPDATE, payload}
 }
 
-export function deleteNote(payload){
+export function deleteNote(payload = {id: ''}){
 	return {type: DELETE, payload}
 }
 
@@ -63,8 +63,10 @@ export default function reducer(state = initialList, action = {}) {
             return {list: new_list}
         }
         case 'note/DELETE': {
-            console.log('삭제');
-            return state;
+            const new_list = state.list.filter( l => {
+                return l.id !== payload.id
+            })
+            return {list: new_list}
         }
         default: {
             return state;

@@ -22,7 +22,7 @@ max-width: 1200px;
 margin: auto;
 padding-top: 5px;
 line-height: 40px;
-color: #fff;
+color: #ffe67e;
 font-family: 'Kirang Haerang', cursive;
 
 & > div {
