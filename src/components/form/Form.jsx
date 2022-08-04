@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { addNote } from "../../redux/config/modules/note";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,11 +7,19 @@ import styled from "styled-components";
 import Container from "@mui/material/Container";
 import { Button } from "@mui/material";
 
-export default function Form(){
+export default function Form(props){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const titleRef = React.useRef(null);
     const contextRef = React.useRef(null);
+    const {pageChange, setPageChange}=props.propsPack
+
+    useEffect(()=>{
+        titleRef.current.value="";
+        contextRef.current.value="";
+        console.log('이펙트')
+        setPageChange(false)
+    }, [pageChange])
 
     const submitNote = () => {
         if(titleRef.current.value === "" || contextRef.current.value === ""){
@@ -63,7 +71,7 @@ export default function Form(){
                 ref={contextRef}
                 placeholder="내용을 입력하세요."
                 minLength={1} autoComplete='off'
-                maxLength={30}
+                maxLength={100}
                 />
                 <Button 
                 variant="contained"

@@ -4,7 +4,7 @@ import { loadNote } from '../../redux/config/modules/note';
 import { useEffect } from "react";
 import styled from "styled-components";
 
-export default function TodoList(){
+export default function TodoList(props){
     const dispatch = useDispatch();
     const data = useSelector((state) => state.note.list)
     const listDone = data.filter(list => list.done )
@@ -19,13 +19,13 @@ export default function TodoList(){
             {data.length === 0 ? <span style={{marginTop: '8px'}}>리스트를 입력해주세요.</span> : ""}
             <div className="list-container">
                 <div className="contents-area">
-
                     <div className="left">
                         <p className="sticky">해냄</p>
                         {listDone.map(list => {
                             return <Todo 
                                 list={list} 
                                 key={list.id}
+                                setPageChange={props.setPageChange}
                             />
                         })}
                     </div>
@@ -36,6 +36,7 @@ export default function TodoList(){
                             return <Todo 
                                 list={list} 
                                 key={list.id}
+                                setPageChange={props.setPageChange}
                             />
                         })}
                     </div>

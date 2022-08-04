@@ -16,15 +16,16 @@ export default function Todo(props){
                     {title}
                 </span>
                 <span className='todo-text'>
-                    {context.length>12 ? context.slice(0, 10)+"..." : context}
+                    {context.length>20 ? context.slice(0, 20)+"..." : context}
                 </span>
                 <span className='ox'>
-                    {done?'O':"X"}
+                    {done ? 'O' : "X" }
                 </span>
             </div>
             <button  
             onClick={()=>{
                 navigate(id)
+                props.setPageChange(true)
             }}>
                 상세보기
             </button>
@@ -32,6 +33,7 @@ export default function Todo(props){
             style={{color: '#3caeff'}}
             onClick={()=>{
                 dispatch(deleteNote({id: id}))
+                props.setPageChange(true)
             }}>
                 삭제
             </button>

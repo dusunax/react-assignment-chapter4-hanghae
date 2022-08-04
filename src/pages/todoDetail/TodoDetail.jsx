@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from "react-redux";
 import { deleteNote } from "../../redux/config/modules/note";
 
-export default function TodoDetail(){
+export default function TodoDetail(props){
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ export default function TodoDetail(){
     return (
         <CardDetail>
             <div>
-                <span className="section-tag">할일</span>
+                <span className="section-tag show-at-md">할일</span>
                 <h2 style={{marginBottom: '0'}}>
                     {title}
                 </h2>
@@ -28,7 +28,8 @@ export default function TodoDetail(){
             </div>
             <div>
                 <button onClick={()=>{
-                    navigate('/')   
+                    navigate('/')
+                    props.setPageChange(true)   
                 }}>
                     뒤로 가기
                 </button>
@@ -36,7 +37,7 @@ export default function TodoDetail(){
                 style={{color: '#3caeff'}}
                 onClick={()=>{
                     dispatch(deleteNote({id: id}))
-                    navigate('/')  
+                    navigate('/')
                 }}>
                     삭제
                 </button>
@@ -93,4 +94,9 @@ button {
     color: #fff;
     font-size: 12px;
 }
+
+@media (max-width: 600px) {
+padding: 20px
+}
+
 `
