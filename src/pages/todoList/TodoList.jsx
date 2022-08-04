@@ -16,6 +16,7 @@ export default function TodoList(){
 
     return (
         <MyList>
+            {data.length === 0 ? <span style={{marginTop: '8px'}}>리스트를 입력해주세요.</span> : ""}
             <div className="list-container">
                 <div className="contents-area">
 
@@ -39,7 +40,6 @@ export default function TodoList(){
                         })}
                     </div>
                 </div>
-                {data.length === 0 ? "리스트를 입력해주세요.":""}
             </div>
         </MyList>
     )
