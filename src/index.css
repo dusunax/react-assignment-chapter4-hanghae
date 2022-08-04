@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 
 body {
-  background-color: #c8d1d4;
+  background-color: #a0adb1;
+  background-image: radial-gradient(#a6a6a6, #9a9a9a);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
