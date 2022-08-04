@@ -39,6 +39,7 @@ export default function TodoList(){
                     })}
                 </div>
             </div>
+            {data.length === 0 ? "리스트를 입력해주세요.":""}
             
         </MyList>
     )
@@ -47,9 +48,8 @@ export default function TodoList(){
 const MyList=styled.div`
 color: #fff;
 position: relative;
-background-color: #414141;
 border-radius: 0 0 16px 16px;
-background-image: linear-gradient( transparent, rgba(108, 113, 123, 0.2));
+background-image: linear-gradient(rgba(108, 113, 123, 0.2), transparent);
 
 .contents-area {
     height: 65vh;

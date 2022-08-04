@@ -12,12 +12,11 @@ export default function TodoDetail(){
     return (
         <CardDetail>
             <span className="section-tag">할일</span>
-            <h2>
+            <h2 style={{marginBottom: '0'}}>
                 {noteSelected.title}
             </h2>
             <br />
             {noteSelected.context}
-            <hr />
             <span className='id-tag'>
                 id: {noteSelected.id}
             </span>
@@ -38,8 +37,10 @@ font-size: 14px;
 display: flex;
 justify-content: space-between;
 flex-flow: column;
-background-color: rgba(255, 255, 255, 0.3);
 border-radius: 0 0 10px 10px;
+
+background-image: linear-gradient(rgba(108, 113, 123, 0.2), transparent);
+color: #fff;
 
 padding: 35px;
 box-sizing: border-box;
