@@ -1,37 +1,53 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import styled from 'styled-components';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteNote } from "../../redux/config/modules/note";
 
 export default function TodoDetail(){
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const data = useSelector((state) => state.note.list)
     let {id:curr_id} = useParams();
-    const noteSelected = data.filter(list => list.id === curr_id)[0]
 
-    const navigate = useNavigate();
+    const noteSelected = data.filter(list => list.id === curr_id)[0]
+    const {title, id, context}=noteSelected
 
     return (
         <CardDetail>
-            <span className="section-tag">할일</span>
-            <h2 style={{marginBottom: '0'}}>
-                {noteSelected.title}
-            </h2>
-            <br />
-            {noteSelected.context}
-            <span className='id-tag'>
-                id: {noteSelected.id}
-            </span>
-            <button onClick={()=>{
-                navigate('/')   
-            }}>
-                뒤로 가기
-            </button>
+            <div>
+                <span className="section-tag">할일</span>
+                <h2 style={{marginBottom: '0'}}>
+                    {title}
+                </h2>
+                <br />
+                {context}
+                <span className='id-tag'>
+                    id: {id}
+                </span>
+            </div>
+            <div>
+                <button onClick={()=>{
+                    navigate('/')   
+                }}>
+                    뒤로 가기
+                </button>
+                <button  
+                style={{color: '#3caeff'}}
+                onClick={()=>{
+                    dispatch(deleteNote({id: id}))
+                    navigate('/')  
+                }}>
+                    삭제
+                </button>
+            </div>
         </CardDetail>
     )
 }
 
 const CardDetail = styled.div`
 width: 100%;
-min-height: 440px;
+flex: 1 1 auto;
 
 font-size: 14px;
 display: flex;
@@ -52,7 +68,7 @@ button {
     color: #fff;
     text-decoration: underline;
     cursor: pointer;
-    font-size: 12px;
+    margin: 0 20px;
 }
 
 .section-tag {

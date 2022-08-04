@@ -45,6 +45,7 @@ export default function Form(){
                 ref={titleRef}
                 placeholder="제목을 입력하세요."
                 minLength={1}
+                maxLength={20}
                 autoFocus={true}
                 autoComplete='off'
                 />
@@ -62,7 +63,7 @@ export default function Form(){
                 ref={contextRef}
                 placeholder="내용을 입력하세요."
                 minLength={1} autoComplete='off'
-                maxLength={50}
+                maxLength={30}
                 />
                 <Button 
                 variant="contained"
@@ -95,10 +96,10 @@ const MyFormControl = styled.form`
 input, textarea {
     all: unset;
     width: 100%;
-    max-width: 180px;
+    max-width: 200px;
     padding: 6px 20px;
     border-radius: 20px;
-    font-size: 10px;
+    font-size: 13px;
     background: #fff;
 }
 
